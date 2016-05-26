@@ -1,0 +1,39 @@
+<h1>&lbrace;&lbrace;ember-formula}}</h1>
+
+{{textarea
+  value        = formula
+  throwOnError = throwOnError
+}}
+
+<label>
+  {{input type="checkbox" checked=throwOnError}} Throw on error
+</label>
+
+{{katex-formula
+  formula      = formula
+  throwOnError = throwOnError
+}}
+
+
+
+<h1>&lbrace;&lbrace;ember-html}}</h1>
+
+<h2>Block version</h2>
+
+{{#katex-html}}
+  <h4>Start</h4>
+
+  \(
+    f(x) = \int_{-\infty}^\infty \hat f(\xi)\,e^{2 \pi i \xi x} \,d\xi
+  \)
+
+  <h4>End</h4>
+{{/katex-html}}
+
+<h2>Inline version</h2>
+
+{{textarea
+  value = html
+}}
+
+{{katex-html safeHtml = safeHtml}}
