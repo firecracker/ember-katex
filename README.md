@@ -136,3 +136,4 @@ License
 This software is free to use under the MIT license. See the [LICENSE](https://github.com/firecracker/ember-katex/blob/gen-1/LICENSE.md) file for license text and copyright information.
 
 Includes fragments of code borrowed from [andybluntish/ember-cli-latex-maths](https://github.com/andybluntish/ember-cli-latex-maths).
+ 
