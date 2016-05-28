@@ -59,6 +59,12 @@ export default Component.extend({
    **/
   layout,
 
+  /**
+   * @property classNames
+   * @type Array
+   **/
+  classNames: ['katexHtml'],
+
 
 
   // ----- Computed properties -----
