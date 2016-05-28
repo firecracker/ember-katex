@@ -1,24 +1,48 @@
 <h1>&lbrace;&lbrace;ember-formula}}</h1>
 
+
+
+<h4>Content of <code>`formula`</code></h4>
+
 {{textarea
-  value        = formula
-  throwOnError = throwOnError
+  value = formula
 }}
 
-<label>
-  {{input type="checkbox" checked=throwOnError}} Throw on error
-</label>
+
+<h4>Template:</h4>
+
+<pre>&lbrace;&lbrace;textarea
+  value = formula
+}}</pre>
+
+
+<h4>Result:</h4>
 
 {{katex-formula
   formula      = formula
   throwOnError = throwOnError
+  tagName      = 'div'
 }}
 
 
 
-<h1>&lbrace;&lbrace;ember-html}}</h1>
+<h1>&lbrace;&lbrace;ember-html}} Block Version</h1>
 
-<h2>Block version</h2>
+<h4>Template:</h4>
+
+<pre>&lbrace;&lbrace;#katex-html}}
+  &lt;h4>Start&lt;/h4>
+
+  \(
+    f(x) = \int_{-\infty}^\infty \hat f(\xi)\,e^{2 \pi i \xi x} \,d\xi
+  \)
+
+  &lt;h4>End&lt;/h4>
+&lbrace;&lbrace;/katex-html}}</pre>
+
+
+
+<h4>Result:</h4>
 
 {{#katex-html}}
   <h4>Start</h4>
@@ -30,10 +54,29 @@
   <h4>End</h4>
 {{/katex-html}}
 
-<h2>Inline version</h2>
+
+
+
+
+<h1>&lbrace;&lbrace;ember-html}} Inline Version</h1>
+
+<h4>Content of <code>`safeHtml`</code></h4>
 
 {{textarea
   value = html
 }}
 
+
+
+<h4>Template:</h4>
+
+<pre>&lbrace;&lbrace;katex-html safeHtml = safeHtml}}</pre>
+
+
+
+<h4>Result:</h4>
+
 {{katex-html safeHtml = safeHtml}}
+
+
+<a href="https://github.com/firecracker/ember-katex/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>

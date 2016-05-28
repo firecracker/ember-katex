@@ -11,6 +11,13 @@ Render your math-tex formulas using [KaTeX](http://khan.github.io/KaTeX/).
 
 
 
+Demo
+----
+
+http://firecracker.github.io/ember-katex/
+
+
+
 Installation
 ------------
 
@@ -127,6 +134,20 @@ You can overcome this limitation using a computed property or a custom helper (n
     {{wrap-formula formula}}
   </div>
 {{/katex-html}}
+```
+
+
+### Rendering programmatically
+
+This addon exposes KaTeX for import:
+
+```js
+import {
+  render,
+  renderToString,
+  ParseError,
+  renderMathInElement
+} from 'katex';
 ```
 
 

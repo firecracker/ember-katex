@@ -8,7 +8,7 @@ const {
 
 export default Controller.extend({
 
-  formula: "f(x) = \\int_{-\\infty}^\\infty \\hat f(\\xi)\\,e^{2 \\pi i \\xi x} \\,d\\xix",
+  formula: "f(x) = \\int_{-\\infty}^\\infty \\hat f(\\xi)\\,e^{2 \\pi i \\xi x} \\,d\\xi",
 
   throwOnError: false,
 

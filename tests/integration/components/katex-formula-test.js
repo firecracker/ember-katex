@@ -16,11 +16,6 @@ describeComponent(
 
     const formula = "f(x) = \\int_{-\\infty}^\\infty \\hat f(\\xi)\\,e^{2 \\pi i \\xi x} \\,d\\xi";
 
-    it('empty', function() {
-      this.render(hbs`{{katex-formula}}`);
-      expect(this.$('span')).length(0);
-    });
-
     it('formula good, then bad', function() {
       this.setProperties({
         formula
