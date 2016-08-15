@@ -6,7 +6,6 @@ ember-katex
 [![Ember Observer Score](https://emberobserver.com/badges/ember-katex.svg)](https://emberobserver.com/addons/ember-katex)
 ![1.13+](https://embadge.io/v1/badge.svg?start=1.13.0)
 
-
 Render your math-tex formulas using [KaTeX](http://khan.github.io/KaTeX/). 
 
 
@@ -41,12 +40,12 @@ Pass a formula as an argument.
 
 #### Arguments
 
-| Argument       | Type    | Default           | Description                                                           |
-|:---------------|:--------|:------------------|:----------------------------------------------------------------------|
-| `formula`      | String  | <required>        | A formula to render                                                   |
-| `throwOnError` | Boolean | `false` :warning: | Whether to crash on parse errors                                      |
-| `errorColor`   | String  | `'#cc0000'`       | A color which unsupported commands are rendered in                    |
-| `displayMode`  | Boolean | `false`           | Whether to display the formula in inline (false) or block (true) form |
+| Argument       | Type    | Default           | Description                                                                                        |
+|:---------------|:--------|:------------------|:---------------------------------------------------------------------------------------------------|
+| `formula`      | String  | <required>        | A formula to render                                                                                |
+| `throwOnError` | Boolean | `false` :warning: | Whether to crash on parse errors                                                                   |
+| `errorColor`   | String  | `'#cc0000'`       | A color which unsupported commands are rendered in                                                 |
+| `displayMode`  | Boolean | `false`           | Whether to use the display mode. Leave it disabled for inline formulas, enable for block formulas. |
 
 #### Security warning
 
@@ -55,12 +54,12 @@ Pass a formula as an argument.
 It is your duty to properly sanitize incoming formulas, so that no malicious HTML elements or attributes get through.
  
 
+
 ### Rendering HTML with formulas using `{{katex-html}} inline form`
 
 The `{{katex-html}}` component accepts `safeHtml` -- a string of HTML wrapped into `Ember.String.htmlSafe()`. It is your duty to properly sanitize the HTML and explicitly mark it as safe via `Ember.String.htmlSafe()`. If you neglect to sanitize your HTML, it will be marked
 
-Formulas must be wrapped with `\(` and `\)` (configurable). Note: sometimes you'll need to use double backslashes, e. g. `'\\('` and `'\\)', in order to prevent the backslash to be treated as an escape character.
-
+Formulas must be wrapped with `\(` and `\)` (configurable). Note: sometimes you'll need to use double backslashes, e. g. `'\\('` and `'\\)'`, in order to prevent the backslash to be treated as an escape.
 
 #### Example
 
@@ -112,7 +111,7 @@ Instead of passing the `safeHtml` argument, you can pass a Handlebars block:
 
 :warning: You get the benefit of using Handlebars in the content passed into KaTeX, but **data bindings in the content will be detached, and your content will not update dynamically**, unless the `{{#katex-html}}` component gets torn down and a new instance is rendered (e. g. when going to another route and back). Use `{{#katex-html}}` block form only if your content is static, otherwise use the `{{katex-html}}` [inline form](#rendering-html-with-formulas-using-katex-html-inline-form).
 
-:warning: The `\(` and `\)` formula markers should be within one HTML text node, otherwise KaTeX will not recognize the formula. This will **not** work:
+:warning: The formula and the `\(` `\)` formula markers should be within one HTML text node, otherwise KaTeX will not recognize the formula. This will **not** work:
 
 ```hbs
 {{! faulty example}}
@@ -127,9 +126,10 @@ Instead of passing the `safeHtml` argument, you can pass a Handlebars block:
 You can overcome this limitation by pre-wrapping your formulas with `\(` and `\)` via a computed property or a custom helper (not included).
 
 
+
 ### Rendering programmatically
 
-This addon exposes KaTeX for import:
+This addon exposes KaTeX functions for importing:
 
 ```js
 import {
@@ -139,6 +139,7 @@ import {
   renderMathInElement
 } from 'katex';
 ```
+
 
 
 License
