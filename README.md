@@ -110,9 +110,9 @@ Instead of passing the `safeHtml` argument, you can pass a Handlebars block:
 {{/katex-html}}
 ```
 
-You get the benefit of using Handlebars, but formula bindings will **not** be updated dynamically. Use this feature only if your formula content is static.
+:warning: You get the benefit of using Handlebars in the content passed into KaTeX, but **data bindings in the content will be detached, and your content will not update dynamically**, unless the `{{#katex-html}}` component gets torn down and a new instance is rendered (e. g. when going to another route and back). Use `{{#katex-html}}` block form only if your content is static, otherwise use the `{{katex-html}}` [inline form](#rendering-html-with-formulas-using-katex-html-inline-form).
 
-The `\(` and `\)` formula markers should be within one HTML text node, otherwise KaTeX will not recognize the formula. This will **not** work:
+:warning: The `\(` and `\)` formula markers should be within one HTML text node, otherwise KaTeX will not recognize the formula. This will **not** work:
 
 ```hbs
 {{! faulty example}}
@@ -124,17 +124,7 @@ The `\(` and `\)` formula markers should be within one HTML text node, otherwise
 {{/katex-html}}
 ```
 
-You can overcome this limitation using a computed property or a custom helper (not included):
-
-```hbs
-{{! faulty example}}
-
-{{#katex-html}}
-  <div>
-    {{wrap-formula formula}}
-  </div>
-{{/katex-html}}
-```
+You can overcome this limitation by pre-wrapping your formulas with `\(` and `\)` via a computed property or a custom helper (not included).
 
 
 ### Rendering programmatically
