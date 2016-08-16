@@ -1,15 +1,14 @@
 import Ember from 'ember';
 
 const {
+  $,
   Component,
   computed,
   merge,
-  observer,
-  on,
   String: {htmlSafe}
 } = Ember;
 
-import {ParseError, renderMathInElement} from 'katex';
+import {renderMathInElement} from 'katex';
 
 import layout from '../templates/components/katex-html';
 
@@ -97,17 +96,18 @@ export default Component.extend({
   ),
 
 
-
-  // ----- Events -----
   /**
-   * @method renderMathInElement
-   * @on didInsertElement
-   * @observer safeHtml
+   * @proeprty result
    *
+   * An htmlSafe string containing HTML with formulas rendered.
+   *
+   * @comupted safeHtml, options
+   * @final
    **/
-  renderMathInElement: on('didRender', observer('safeHtml', function () {
-    const element = this.get('element');
-    const options = this.get('options');
-    renderMathInElement(element, options);
-  }))
+  result: computed('safeHtml', 'options', function () {
+    //ToDo: error if `safeHtml` string is not html safe
+    const $element = $(`<div>${this.get('safeHtml')}</div>`);
+    renderMathInElement($element[0], this.get('options'));
+    return htmlSafe($element.prop('outerHTML'));
+  }),
 });
