@@ -5,6 +5,7 @@ const {
   Component,
   computed,
   merge,
+  on,
   String: {htmlSafe}
 } = Ember;
 
@@ -110,4 +111,22 @@ export default Component.extend({
     renderMathInElement($element[0], this.get('options'));
     return htmlSafe($element.prop('outerHTML'));
   }),
+
+
+
+  // ----- Events -----
+  /**
+   * @method renderMathInElement
+   * @on didInsertElement
+   *
+   **/
+  renderMathInElement: on('didInsertElement', function () {
+    if (this.get('safeHtml') != null) {
+      return;
+    }
+
+    const element = this.get('element');
+    const options = this.get('options');
+    renderMathInElement(element, options);
+  })
 });
